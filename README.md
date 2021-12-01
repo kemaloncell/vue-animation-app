@@ -1,4 +1,4 @@
-# pogaca-nerede-kart-oyunu
+# Where is the cat - card game
 
 > A Vue.js project
 
