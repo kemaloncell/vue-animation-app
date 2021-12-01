@@ -5,15 +5,19 @@
     <div class="container">
       <app-card v-for="i in 5" :key="i"></app-card>
     </div>
-    <div class="container"></div>
+    <div class="container">
+      <app-default-card></app-default-card>
+    </div>
   </div>
 </template>
 
 <script>
 import Card from "./Card.vue";
+import DefaultCard from "./DefaultCard.vue";
 export default {
   components: {
     appCard: Card,
+    appDefaultCard: DefaultCard,
   },
 };
 </script>

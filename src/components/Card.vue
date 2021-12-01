@@ -17,6 +17,9 @@ export default {};
   transition: box-shadow 0.5s;
   margin-left: 15px;
 }
+.card:first-child {
+  margin-left: 0px;
+}
 .card:hover {
   box-shadow: 0px 5px 48px #666;
   transition: box-shadow 0.5s;
