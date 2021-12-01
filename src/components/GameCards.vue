@@ -8,7 +8,9 @@
       </transition-group>
     </div>
     <div class="container">
-      <app-default-card></app-default-card>
+      <transition name="rotate" mode="out-in">
+        <component :card="answer" @click.native="showCard(answer)" :is="activeCard"> </component>
+      </transition>
     </div>
   </div>
 </template>
@@ -25,12 +27,13 @@ export default {
     return {
       selectedCard: null,
       answer: {},
+      activeCard: "app-default-card",
       cards: [
-        { id: 1, component: "app-cards", image: "src/assets/card-1.jpg" },
-        { id: 2, component: "app-cards", image: "src/assets/card-2.jpg" },
-        { id: 3, component: "app-cards", image: "src/assets/card-3.jpg" },
-        { id: 4, component: "app-cards", image: "src/assets/card-4.jpg" },
-        { id: 5, component: "app-cards", image: "src/assets/card-5.jpg" },
+        { id: 1, component: "app-card", image: "src/assets/card-1.jpg" },
+        { id: 2, component: "app-card", image: "src/assets/card-2.jpg" },
+        { id: 3, component: "app-card", image: "src/assets/card-3.jpg" },
+        { id: 4, component: "app-card", image: "src/assets/card-4.jpg" },
+        { id: 5, component: "app-card", image: "src/assets/card-5.jpg" },
       ],
     };
   },
@@ -38,6 +41,11 @@ export default {
     let answer = Math.ceil(Math.random() * this.cards.length);
     // 1-5
     this.answer = this.cards[answer - 1];
+  },
+  methods: {
+    showCard(answer) {
+      this.activeCard = answer.component;
+    },
   },
 };
 </script>
@@ -85,7 +93,35 @@ export default {
     transform: rotateY(0);
   }
   to {
-    transform: rotateY(360deg);
+    transform: rotateY(1080deg);
+  }
+}
+
+/* Animation for card */
+.rotate-enter {
+}
+.rotate-enter-active {
+  animation: rotate-in ease-in-out 2s forwards;
+}
+.rotate-leave {
+}
+.rotate-leave-active {
+  animation: rotate-out ease-in-out 2s forwards;
+}
+@keyframes rotate-in {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+@keyframes rotate-out {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(90deg);
   }
 }
 </style>
