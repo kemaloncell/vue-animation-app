@@ -3,7 +3,9 @@
     <h1 class="title"><span>Where is the</span> Cat?</h1>
     <h4 class="description">After choosing one of the open cards, click on the closed card.</h4>
     <div class="container">
-      <app-card :class="{ shadow: selectedCard == card.id }" @click.native="selectedCard = card.id" v-for="card in cards" :card="card" :key="card"></app-card>
+      <transition-group name="rotate-all" class="card-container" appear>
+        <app-card :class="{ shadow: selectedCard == card.id }" @click.native="selectedCard = card.id" v-for="card in cards" :card="card" :key="card.id"></app-card>
+      </transition-group>
     </div>
     <div class="container">
       <app-default-card></app-default-card>
@@ -54,7 +56,8 @@ export default {
   text-align: center;
 }
 
-.container {
+.container,
+.card-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,5 +67,25 @@ export default {
 .shadow {
   box-shadow: 0px 5px 48px #30969f !important;
   transition: box-shadow 0.5s;
+}
+
+/* Animation for cards */
+.rotate-all-enter {
+}
+.rotate-all-enter-active {
+  animation: rotate-all ease-in-out 2s forwards;
+}
+.rotate-all-leave {
+}
+.rotate-all-leave-active {
+}
+
+@keyframes rotate-all {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 </style>
