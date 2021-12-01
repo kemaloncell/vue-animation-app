@@ -3,7 +3,7 @@
     <h1 class="title"><span>Where is the</span> Cat?</h1>
     <h4 class="description">After choosing one of the open cards, click on the closed card.</h4>
     <div class="container">
-      <app-card v-for="card in cards" :card="card" :key="card"></app-card>
+      <app-card :class="{ shadow: selectedCard == card.id }" @click.native="selectedCard = card.id" v-for="card in cards" :card="card" :key="card"></app-card>
     </div>
     <div class="container">
       <app-default-card></app-default-card>
@@ -21,6 +21,7 @@ export default {
   },
   data() {
     return {
+      selectedCard: null,
       cards: [
         { id: 1, component: "app-cards", image: "src/assets/card-1.jpg" },
         { id: 2, component: "app-cards", image: "src/assets/card-2.jpg" },
@@ -52,5 +53,10 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+}
+
+.shadow {
+  box-shadow: 0px 5px 48px #30969f !important;
+  transition: box-shadow 0.5s;
 }
 </style>
