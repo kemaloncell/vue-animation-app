@@ -3,7 +3,7 @@
     <h1 class="title"><span>Where is the</span> Cat?</h1>
     <h4 class="description">After choosing one of the open cards, click on the closed card.</h4>
     <div class="container">
-      <app-card v-for="i in 5" :key="i"></app-card>
+      <app-card v-for="card in cards" :card="card" :key="card"></app-card>
     </div>
     <div class="container">
       <app-default-card></app-default-card>
@@ -18,6 +18,17 @@ export default {
   components: {
     appCard: Card,
     appDefaultCard: DefaultCard,
+  },
+  data() {
+    return {
+      cards: [
+        { id: 1, component: "app-cards", image: "src/assets/card-1.jpg" },
+        { id: 2, component: "app-cards", image: "src/assets/card-2.jpg" },
+        { id: 3, component: "app-cards", image: "src/assets/card-3.jpg" },
+        { id: 4, component: "app-cards", image: "src/assets/card-4.jpg" },
+        { id: 5, component: "app-cards", image: "src/assets/card-5.jpg" },
+      ],
+    };
   },
 };
 </script>
