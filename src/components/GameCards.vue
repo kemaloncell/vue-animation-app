@@ -1,5 +1,6 @@
 <template>
   <div class="game-area">
+    <p>{{ this.answer }}</p>
     <h1 class="title"><span>Where is the</span> Cat?</h1>
     <h4 class="description">After choosing one of the open cards, click on the closed card.</h4>
     <div class="container">
@@ -44,7 +45,20 @@ export default {
   },
   methods: {
     showCard(answer) {
-      this.activeCard = answer.component;
+      if (this.selectedCard == null) {
+        alert("Please select a card!!");
+      } else {
+        setTimeout(() => {
+          this.activeCard = answer.component;
+          if (answer.id == this.selectedCard) {
+            // alert("d");
+            this.$emit("isCorrectEvent", "app-celebrate");
+          } else {
+            alert("y");
+            this.$emit("isCorrectEvent", "app-failure");
+          }
+        }, 1000);
+      }
     },
   },
 };
@@ -86,6 +100,7 @@ export default {
 .rotate-all-leave {
 }
 .rotate-all-leave-active {
+  animation: rotate-all ease-in-out 2s forwards;
 }
 
 @keyframes rotate-all {
@@ -101,24 +116,24 @@ export default {
 .rotate-enter {
 }
 .rotate-enter-active {
-  animation: rotate-in ease-in-out 2s forwards;
+  animation: rotate-in 0.5s ease-in-out forwards;
 }
 .rotate-leave {
 }
 .rotate-leave-active {
-  animation: rotate-out ease-in-out 2s forwards;
+  animation: rotate-out 0.5s ease-in-out forwards;
 }
 @keyframes rotate-in {
   from {
     transform: rotateY(90deg);
   }
   to {
-    transform: rotateY(0);
+    transform: rotateY(0deg);
   }
 }
 @keyframes rotate-out {
   from {
-    transform: rotateY(0);
+    transform: rotateY(0deg);
   }
   to {
     transform: rotateY(90deg);

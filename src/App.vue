@@ -1,5 +1,5 @@
 <template>
-  <components :is="activeComponent"></components>
+  <components @isCorrectEvent="activeComponent = $event" :is="activeComponent"></components>
 </template>
 <script>
 import GameCards from "./components/GameCards.vue";
