@@ -1,6 +1,12 @@
 # Where is the cat - card game
 
-> A Vue.js project
+
+## Where Is The Cat Card Guessing Game | Vue.JS
+
+![alt text](https://github.com/kemaloncell/vue-animation-app-/blob/main/src/assets/screenshots/forReadme.gif)
+
+
+
 
 ## Build Setup
 
