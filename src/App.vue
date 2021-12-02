@@ -1,7 +1,8 @@
 <template>
-  <transition name="slideContainer" mode="out-in">
-    <components @activeComponentEvent="activeComponent = $event" :is="activeComponent"></components>
-  </transition>
+  <transition-group name="slideContainer" mode="out-in">
+    <components key="mainComponent" @activeComponentEvent="activeComponent = $event" :is="activeComponent"></components>
+    <canvas key="canvas" id="canvas" v-show="activeComponent == 'app-celebrate'"></canvas>
+  </transition-group>
 </template>
 <script>
 import GameCards from "./components/GameCards.vue";
