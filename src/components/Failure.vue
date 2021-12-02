@@ -1,18 +1,16 @@
 <template>
   <div class="container">
-    <h1>sorry wrong answer</h1>
-    <button @click="newGame">New game</button>
+    <h1>Sorry Wrong Answer</h1>
+    <button @click="newGame">New Game</button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      methods: {
-        newGame() {},
-      },
-    };
+  methods: {
+    newGame() {
+      this.$emit("activeComponentEvent", "app-game-cards");
+    },
   },
 };
 </script>

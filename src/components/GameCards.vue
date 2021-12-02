@@ -48,14 +48,12 @@ export default {
       if (this.selectedCard == null) {
         alert("Please select a card!!");
       } else {
+        this.activeCard = answer.component;
         setTimeout(() => {
-          this.activeCard = answer.component;
           if (answer.id == this.selectedCard) {
-            // alert("d");
-            this.$emit("isCorrectEvent", "app-celebrate");
+            this.$emit("activeComponentEvent", "app-celebrate");
           } else {
-            alert("y");
-            this.$emit("isCorrectEvent", "app-failure");
+            this.$emit("activeComponentEvent", "app-failure");
           }
         }, 1000);
       }
